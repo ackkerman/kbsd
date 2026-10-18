@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Meet kbsd: seven keyboard sound sets, a tiny menu bar companion, and a little more joy in every keystroke. Built for Mac."
+    />
+    <meta name="theme-color" content="#faf7ef" />
+    <meta
+      property="og:title"
+      content="kbsd — A little more feel in every keystroke"
+    />
+    <meta
+      property="og:description"
+      content="Seven keyboard sound sets. Native for Mac. Download kbsd on GitHub."
+    />
+    <meta property="og:url" content="https://kbsd.pages.dev/" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <title>kbsd — A little more feel in every keystroke</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="kbsd home"
+        ><img src="/icon.svg" alt="" width="40" height="40" />kbsd</a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#sounds">Try the sounds</a
+        ><a
+          href="https://github.com/ackkerman/kbsd"
+          target="_blank"
+          rel="noopener"
+          >GitHub ↗</a
+        ><a
+          class="button small"
+          href="https://github.com/ackkerman/kbsd/releases/latest"
+          >Download</a
+        >
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow"><span></span> A SMALL COMPANION FOR YOUR MAC</p>
+        <h1>A little more <em>feel</em><br />in every keystroke.</h1>
+        <p class="intro">
+          Turn everyday typing into something you look forward to.<br
+            class="desktop-break"
+          />
+          Seven sound sets. Your own rhythm. Quietly in the menu bar.
+        </p>
+        <div class="hero-actions">
+          <a
+            class="button primary"
+            href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-macos-arm64.zip"
+            >Download for Mac <span>↓</span></a
+          ><a class="text-link" href="#sounds"
+            >Find your sound <span>↘</span></a
+          >
+        </div>
+        <p class="release-note">v1.0.0 · Apple Silicon · macOS 14+</p>
+      </section>
+      <section class="experience" id="sounds" aria-labelledby="sound-heading">
+        <div class="experience-head">
+          <div>
+            <p class="eyebrow">SOUND GOOD. FEEL GOOD.</p>
+            <h2 id="sound-heading">A sound for every mood.</h2>
+          </div>
+          <p>Press play. Pick a favorite.<br />Make it yours in the app.</p>
+        </div>
+        <div class="demo-layout">
+          <div class="sound-panel">
+            <div class="sound-panel-header">
+              <img src="/icon.svg" alt="" width="25" height="25" /><strong
+                >kbsd</strong
+              ><span>Sound studio</span>
+            </div>
+            <div id="sound-list"></div>
+            <div class="sound-volume">
+              <label for="volume">Volume</label
+              ><input
+                id="volume"
+                type="range"
+                min="0"
+                max="100"
+                value="70"
+              /><output id="volume-value" for="volume">70%</output>
+            </div>
+            <p role="status" id="preview-status" aria-live="polite">
+              A little preview of your next favorite sound.
+            </p>
+          </div>
+          <div class="app-showcase">
+            <div class="showcase-label">
+              <span class="status-dot"></span> NATIVE. LIGHTWEIGHT. YOURS.
+            </div>
+            <img
+              class="app-screenshot"
+              src="/assets/images/app-preview.png"
+              alt="kbsd Mac app: seven sound sets with play buttons and sound settings"
+              width="1580"
+              height="1284"
+            />
+            <div class="showcase-caption">
+              <strong>Small app. Big typing energy.</strong
+              ><span>Always one click away in your menu bar.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="features" aria-label="Features">
+        <article>
+          <span class="feature-number">01 / SOUND</span>
+          <h3>Down. Up. Delight.</h3>
+          <p>
+            Separate press and release sounds, with subtle pitch variation that
+            keeps things feeling natural.
+          </p>
+        </article>
+        <article>
+          <span class="feature-number">02 / CONTROL</span>
+          <h3>Your perfect little click.</h3>
+          <p>
+            Set the volume, tune the pitch, add stereo width, and choose whether
+            modifiers and mouse clicks join in.
+          </p>
+        </article>
+        <article>
+          <span class="feature-number">03 / PRIVACY</span>
+          <h3>Just sound. Just here.</h3>
+          <p>
+            No accounts, no typing logs, no input sent anywhere. Settings and
+            aggregate counts stay on your Mac.
+          </p>
+        </article>
+      </section>
+      <section class="setup" id="setup">
+        <div>
+          <p class="eyebrow">THREE SMALL STEPS</p>
+          <h2>From download<br />to your first click.</h2>
+        </div>
+        <ol>
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Download & open</h3>
+              <p>
+                Unzip kbsd and move it to Applications. This first release is
+                ad-hoc signed and isn’t notarized. macOS may show a security
+                warning; review the source and Apple’s opening instructions
+                before proceeding.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Allow keyboard access</h3>
+              <p>
+                Open General in kbsd, then Open System Settings. Allow kbsd in
+                Accessibility (called Device Control & Data Access on some macOS
+                versions). No permission is needed for in-app previews.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Pick your sound</h3>
+              <p>
+                Choose a sound, set your volume, and get back to whatever you
+                love making.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section class="faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">A few things to know.</h2>
+        <details>
+          <summary>Which Macs can run kbsd?</summary>
+          <p>
+            The v1.0.0 download is for Apple Silicon Macs running macOS 14 or
+            later. An Intel build is not included.
+          </p>
+        </details>
+        <details>
+          <summary>Does kbsd record what I type?</summary>
+          <p>
+            No. It uses physical key events to choose a sound, without reading
+            typed characters or storing a key history. Only daily and total
+            counts are saved locally.
+          </p>
+        </details>
+        <details>
+          <summary>Why does it only play inside the app?</summary>
+          <p>
+            Keyboard access hasn’t been granted to the current app. Open General
+            → Open System Settings. If an older build is already allowed, remove
+            that entry, add the current kbsd.app, and click Check again.
+          </p>
+        </details>
+        <details>
+          <summary>Where do the sounds come from?</summary>
+          <p>
+            The switch recordings come from Klack’s sound previews and are
+            included with permission. Their original rights holders retain
+            ownership. See the repository’s asset attribution for details.
+          </p>
+        </details>
+        <details>
+          <summary>What is included in this release?</summary>
+          <p>
+            Seven sounds, press/release feedback, volume and pitch controls,
+            stereo width, modifier and mouse sounds, local counts, and optional
+            launch at login. Head-tracked spatial audio and automatic updates
+            are not included.
+          </p>
+        </details>
+      </section>
+      <section class="closing">
+        <img src="/icon.svg" alt="kbsd icon" width="72" height="72" />
+        <h2>Your keyboard.<br />A little more you.</h2>
+        <a
+          class="button primary"
+          href="https://github.com/ackkerman/kbsd/releases/latest"
+          >Get kbsd <span>↓</span></a
+        >
+      </section>
+    </main>
+    <footer>
+      <a class="brand" href="/">kbsd</a>
+      <p>Made for the things you make.</p>
+      <div>
+        <a href="https://github.com/ackkerman/kbsd">Source code ↗</a
+        ><a href="https://github.com/ackkerman/kbsd/releases">Releases ↗</a>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

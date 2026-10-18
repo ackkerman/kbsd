@@ -1,0 +1,65 @@
+# kbsd
+
+A native keyboard-sound companion for Mac. Seven sound sets, separate press and release sounds, and a small home in your menu bar.
+
+**[Website & sound previews](https://kbsd.pages.dev)** · **[Download the latest release](https://github.com/ackkerman/kbsd/releases/latest)**
+
+![kbsd settings](public/assets/images/app-preview.png)
+
+## Download
+
+Get `kbsd-v1.0.0-macos-arm64.zip` from [GitHub Releases](https://github.com/ackkerman/kbsd/releases/latest), unzip it, and move `kbsd.app` to Applications.
+
+- Apple Silicon, macOS 14 or later.
+- This release is ad-hoc signed, **not Developer ID signed or notarized**. macOS may show a security warning. Review the source and [Apple's guidance](https://support.apple.com/en-us/102445) before opening it.
+- In kbsd, open **General → Open System Settings**, then allow kbsd in Accessibility (called **Device Control & Data Access** on some macOS versions).
+- In-app sound previews work without keyboard access. Other-app typing requires it.
+- If a previous development build is already allowed but kbsd still says **Preview only**, remove that old permission entry, add the current app, and click **Check again**.
+
+## Features
+
+- Seven sound sets: Japanese Black, Crystal Purple, Oreo, Cardboard, Milky Yellow, Super Red, and Cream.
+- Independent down/up sounds with overlapping playback.
+- Volume, pitch, subtle random pitch, and stereo width.
+- Optional modifier-key and mouse-click sounds.
+- Screen-lock mute, local preferences, daily/lifetime counts, and optional launch at login.
+- No account, network requests, typed-character collection, or keystroke history in the native app.
+
+The sound bank uses 13 sample key pairs per set; other physical keys reuse samples from the same set. Stereo width uses panning, not head-tracked spatial audio. Automatic updates and an Intel download are not included.
+
+## Build
+
+Requires Xcode command-line tools with Swift 6+, Node.js 22.6+, Python 3, and macOS.
+
+```sh
+npm ci
+make check
+make native-run
+```
+
+`make check` runs web formatting/types/tests/build and native formatting/tests/package diagnostics. It produces `dist/kbsd.app`. The diagnostic schedules all 182 recordings through the audio graph and checks finite, non-silent output.
+
+```sh
+make release   # dist/release/ZIP + SHA256SUMS.txt
+```
+
+Verify a downloaded ZIP with `shasum -a 256 -c SHA256SUMS.txt` in the download directory.
+
+## Landing page
+
+```sh
+npm run dev -- --host 0.0.0.0 --port 4173
+npm run build
+```
+
+The static output is `dist/client`. Cloudflare Pages deployment:
+
+```sh
+wrangler pages deploy dist/client --project-name kbsd --branch main
+```
+
+## Source and assets
+
+See [ATTRIBUTION.md](ATTRIBUTION.md) for asset provenance. The recordings are from Klack’s sound previews and included with permission; their original rights holders retain ownership. Icon artwork and the landing page are specific to kbsd. Original website images and source code are not included.
+
+No license has been specified for first-party code or assets. Public availability does not itself grant reuse rights. Dependencies retain their own licenses.

@@ -1,0 +1,21 @@
+name: Check
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check && npm run typecheck && npm test && npm run build && npm run test:sites
+  native:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test --package-path native
+      - run: bash native/scripts/package-app.sh

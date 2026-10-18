@@ -1,0 +1,30 @@
+{
+  "name": "kbsd",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "preview": "vite preview",
+    "test:sites": "node --test tests/sites-worker.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "format:check": "prettier --check src tests index.html vite.config.ts",
+    "format": "prettier --write src tests index.html vite.config.ts",
+    "test": "node --experimental-strip-types --test tests/preview.test.mjs tests/assets.test.mjs tests/publication.test.mjs"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10",
+    "typescript": "5.9.3",
+    "vite": "6.4.4"
+  },
+  "description": "Native keyboard sounds for macOS with a companion landing page",
+  "homepage": "https://kbsd.pages.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ackkerman/kbsd.git"
+  },
+  "engines": {
+    "node": ">=22.6"
+  }
+}
