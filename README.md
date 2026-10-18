@@ -2,7 +2,7 @@
 
 A native keyboard-sound companion for Mac. Seven sound sets, separate press and release sounds, and a small home in your menu bar.
 
-**[Website & sound previews](https://kbsd.pages.dev)** · **[Download the latest release](https://github.com/ackkerman/kbsd/releases/latest)**
+**[Website & sound previews](https://kbsd.0xdope.com)** · **[Download the latest release](https://github.com/ackkerman/kbsd/releases/latest)**
 
 ![kbsd settings](public/assets/images/app-preview.png)
 

@@ -6,10 +6,11 @@ test("the landing page and repository link to each other and the release downloa
   const html = readFileSync("index.html", "utf8");
   const readme = readFileSync("README.md", "utf8");
   assert.ok(html.includes("https://github.com/ackkerman/kbsd"));
+  assert.ok(html.includes('rel="canonical" href="https://kbsd.0xdope.com/"'));
   assert.ok(
     html.includes("/releases/latest/download/kbsd-v1.0.0-macos-arm64.zip"),
   );
-  assert.ok(readme.includes("https://kbsd.pages.dev"));
+  assert.ok(readme.includes("https://kbsd.0xdope.com"));
   assert.ok(!html.includes("buy.stripe.com"));
   assert.ok(!html.includes("original keyboard sounds"));
 });
