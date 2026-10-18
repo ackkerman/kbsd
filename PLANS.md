@@ -13,7 +13,7 @@ macOS用キーボードサウンドアプリkbsdのソースを公開し、GitHu
 - [x] Release用ZIPとチェックサムを作る
 - [x] ソースをGitHubへpushし、v1.0.0 Releaseを公開する
 - [x] Cloudflare PagesへLPを公開してGitHubとの相互リンクを確認する
-- [ ] 公開先と検証結果を記録する
+- [x] 公開先と検証結果を記録する
 
 ## 判断記録
 - 公開先はhttps://github.com/ackkerman/kbsd。LPは新規Cloudflare Pagesプロジェクトkbsdを使用する。
@@ -48,3 +48,16 @@ macOS用キーボードサウンドアプリkbsdのソースを公開し、GitHu
 - Cloudflare Pagesのhttps://kbsd.pages.dev/へデプロイし、公開画面の表示・音源・GitHub/Releaseリンクを確認。GitHubのhomepageとREADMEもLPへリンクする。
 - HTTPSのOAuth認証にはworkflow権限がなかったため、既存のSSH認証でpushした。認証スコープの追加は行っていない。
 - macOS CIの既定Swiftは5.10で、tools6.0パッケージを読めなかった。公式runner画像にあるXcode16.2をDEVELOPER_DIRで明示する。
+
+## 公開結果
+- ソース: https://github.com/ackkerman/kbsd
+- Release: https://github.com/ackkerman/kbsd/releases/tag/v1.0.0
+- LP: https://kbsd.pages.dev/
+- Cloudflare配信: https://eb18bade.kbsd.pages.dev
+- 公開ZIPを匿名のダウンロードURLから取得し、SHA256一致と展開後の署名・182音声レンダリングを検証した。
+- 公開LPで試聴完了、元録音の表示、リンク、コンソールエラーなしを確認。GitHub homepage/READMEからLPへのリンクも確認した。
+- ソースには私的履歴・資格情報・ビルドキャッシュ・旧サイトの画像/HTML/CSSを含めず、録音は許可確認済みのものだけを出典付きで同梱する。
+- ライセンスは未指定のまま。ReleaseはApple Silicon / macOS14+、アドホック署名で未公証。
+- 改名によりバンドルIDが変わるため、グローバル打鍵音を使う場合はkbsdに対してOS権限を改めて設定する。
+- 修正後のGitHub Actions（4e5f913）はweb/nativeとも成功。ローカル検証に加えて、クリーンなCI環境でソースからのテスト・パッケージ化が成功した。
+- agent-pattern-memoryに基づく振り返りを実施し、再利用ルールをAGENTS.mdへ反映した。私的な実行履歴は公開対象へ追加していない。
