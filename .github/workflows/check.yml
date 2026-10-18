@@ -15,6 +15,8 @@ jobs:
       - run: npm run format:check && npm run typecheck && npm test && npm run build && npm run test:sites
   native:
     runs-on: macos-14
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
       - run: swift test --package-path native

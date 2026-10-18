@@ -11,8 +11,8 @@ macOS用キーボードサウンドアプリkbsdのソースを公開し、GitHu
 - [x] 公開ファイルの秘密情報・第三者素材・依存関係を検査する
 - [x] ネイティブテストと音声レンダリング、LPの操作・レスポンシブを確認する
 - [x] Release用ZIPとチェックサムを作る
-- [ ] ソースをGitHubへpushし、v1.0.0 Releaseを公開する
-- [ ] Cloudflare PagesへLPを公開してGitHubとの相互リンクを確認する
+- [x] ソースをGitHubへpushし、v1.0.0 Releaseを公開する
+- [x] Cloudflare PagesへLPを公開してGitHubとの相互リンクを確認する
 - [ ] 公開先と検証結果を記録する
 
 ## 判断記録
@@ -42,3 +42,9 @@ macOS用キーボードサウンドアプリkbsdのソースを公開し、GitHu
 - npm auditは脆弱性0件。公開対象のスキャナーは脆弱性・禁止ライセンス・設定済み危険パターンの指摘なし。
 - Git公開対象は231ファイル。個人絶対パス、資格情報、キャッシュ、私的履歴を含めない。
 - ReleaseはApple Silicon向け、ZIPに不要な拡張属性・リソースフォークのサイドカーを含めず、SHA256一致を確認。
+
+## 公開後の確認
+- GitHub mainとv1.0.0を公開し、ZIP・SHA256SUMS.txtをReleaseに添付。公開URLからの再取得とSHA256一致を確認した。
+- Cloudflare Pagesのhttps://kbsd.pages.dev/へデプロイし、公開画面の表示・音源・GitHub/Releaseリンクを確認。GitHubのhomepageとREADMEもLPへリンクする。
+- HTTPSのOAuth認証にはworkflow権限がなかったため、既存のSSH認証でpushした。認証スコープの追加は行っていない。
+- macOS CIの既定Swiftは5.10で、tools6.0パッケージを読めなかった。公式runner画像にあるXcode16.2をDEVELOPER_DIRで明示する。
