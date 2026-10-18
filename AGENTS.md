@@ -12,3 +12,11 @@
 - make checkを実行する。公開は依頼があるときだけ実施し、公開URLの検証を完了してから報告する。
 - GitHub ActionsのmacOSランナーは既定のSwiftが古い場合がある。Package.swiftのtoolsバージョンに合うXcodeをDEVELOPER_DIRで明示する。
 - GitHubへのHTTPS pushがworkflowスコープ不足で拒否されたら、既存の認証済みSSH経路を先に確認し、不要なスコープ拡大を避ける。
+
+## 署名の継続性
+
+- 固定証明書が設定された環境では、その署名IDを継続使用し、エラー時にアドホックへ切り替えない。
+- 署名検証ではcdhashの変化ではなくdesignated requirementの継続性を比較する。バンドルIDだけに緩めた条件は採用しない。
+- 検証用ビルドはKBSD_APP_PATHで別出力へ作成し、許可済みの起動中アプリを直接上書きしない。
+
+- Pagesの独自ドメインはPages側の関連付けとDNSの両方を設定し、active状態と公開HTTPSを確認する。CNAMEだけの設定で完了としない。

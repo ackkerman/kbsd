@@ -19,5 +19,6 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s native/Tests/SigningTests
       - run: swift test --package-path native
       - run: bash native/scripts/package-app.sh

@@ -19,3 +19,5 @@ evidence/
 .npmrc
 ASSETS.md
 docs/agent-patterns.md
+__pycache__/
+*.pyc

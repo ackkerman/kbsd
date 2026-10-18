@@ -10,7 +10,7 @@ Source modules:
 - `KbsdAudio`: common-format conversion, overlapping playback, and offline rendering diagnostics.
 - `KbsdDesktop`: menu bar, settings, permission-aware input monitoring, and login-item integration.
 
-Keyboard access must be granted by the user in macOS System Settings. It is never granted programmatically. Rebuilding an ad-hoc signed app may require removing its old permission entry and adding the current app again.
+Keyboard access must be granted by the user in macOS System Settings. It is never granted programmatically. Configure a fixed signing identity as described in SIGNING.md to retain app identity across updates. Moving from an older ad-hoc build can require one final permission re-registration.
 
 Bundled recordings are distributed with permission; see ATTRIBUTION.md. The native process does not read typed characters, store a keystroke history, or make network requests.
 

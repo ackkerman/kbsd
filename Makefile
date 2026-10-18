@@ -41,3 +41,8 @@ check: native-check
 .PHONY: release
 release: ## 配布ZIPとSHA256を生成
 	bash scripts/package-release.sh
+
+.PHONY: native-signing-test
+native-signing-test: ## 固定署名の選択と後戻り防止を検証
+	python3 -m unittest discover -s native/Tests/SigningTests
+native-check: native-signing-test
