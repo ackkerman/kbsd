@@ -10,6 +10,7 @@ macOSおよびWindowsのキーボード入力に応じて、ローカルで心�
 - macOSでは許可がなくてもアプリ内でMUST試聴でき、権限状態をOSからMUST取得する。WindowsではRaw Inputの登録状態を表示し、登録失敗時もMUST試聴できる。
 - 同梱録音の出典と再配布条件をMUST明記する。
 - LPからGitHubソース・ReleaseへMUSTリンクし、GitHubからLPへMUSTリンクする。
+- LPでは既知のWindows / Macに対応した配布物を主ボタンに表示し、他方のOS用配布物をボタン下の折りたたみからMUST選択できる。モバイル・不明なOSではデスクトップ用配布物を明示的に選択可能にし、端末判定の情報を保存・送信してはMUST NOTならない。
 
 ## Non-Goals
 課金、ライセンス認証、Appleのヘッドトラッキング、自動更新、Developer ID署名・公証、Windows版のAuthenticode署名。

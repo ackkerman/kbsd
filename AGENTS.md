@@ -10,6 +10,7 @@
 - アドホック署名の更新後はOS権限の再登録が必要な場合がある。不要な再ビルド・権限変更を避ける。
 - UI操作はAXアクションに加えて実マウスでも確認する。合成入力を実キーボードのグローバル監視の証拠として扱わない。
 - make checkを実行する。公開は依頼があるときだけ実施し、公開URLの検証を完了してから報告する。
+- LPの公開はWrangler CLIを使用し、既存のkbsdプロジェクトのmainブランチへdist/clientだけをデプロイする。初回のOAuth認証が必要な場合は、Pages編集・アカウント情報参照の権限で行う。
 - GitHub ActionsのmacOSランナーは既定のSwiftが古い場合がある。Package.swiftのtoolsバージョンに合うXcodeをDEVELOPER_DIRで明示する。
 - GitHubへのHTTPS pushがworkflowスコープ不足で拒否されたら、既存の認証済みSSH経路を先に確認し、不要なスコープ拡大を避ける。
 

@@ -5,6 +5,9 @@ import {
   clampVolume,
 } from "./audio-preview";
 import "./interaction.css";
+import { configureDownloads } from "./platform-downloads";
+
+configureDownloads(document, navigator);
 
 const sounds = [
   ["slate", "Japanese Black", "A crisp, grounded click.", "#929b9a"],

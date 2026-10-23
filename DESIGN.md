@@ -36,5 +36,5 @@ Windows版はWindows Formsの通知領域・ウィンドウ基盤にWPFのベク
 
 ## アクセシビリティ
 
-Windowsの配布はインストーラーを通常の入口とし、LPではMacとWindowsのダウンロードを同じ大きさのボタンで表示する。portable ZIPは補助リンクにする。インストーラーと検索結果には同じ独自アイコンを使用し、ログイン時起動はアプリのGeneral画面で選択する。
+Windowsの配布はインストーラーを通常の入口とする。LPでは閲覧中のOSに合う主ボタンを1つ表示し、バージョン・必要環境と小さなOther downloadsの折りたたみを下に配置する。折りたたみには他方のOSとportable ZIPをまとめ、標準のdetails / summaryでマウス・キーボード・スクリーンリーダーに対応する。モバイル・不明なOSではDownload kbsdとChoose your platformを表示する。インストーラーと検索結果には同じ独自アイコンを使用し、ログイン時起動はアプリのGeneral画面で選択する。
 フォーカス表示、ボタンの状態、スクリーンリーダー向けラベル、ライブ領域、reduce motionを提供する。権限がない場合はPreview onlyと表示する。

@@ -35,6 +35,7 @@
           >GitHub ↗</a
         ><a
           class="button small"
+          data-primary-download
           href="https://github.com/ackkerman/kbsd/releases/latest"
           >Download</a
         >
@@ -50,27 +51,55 @@
           />
           Seven sound sets. Your own rhythm. Quietly in the background.
         </p>
-        <div class="hero-actions">
+        <div class="hero-download" id="download">
           <a
             class="button primary"
-            href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-macos-arm64.zip"
-            >Download for Mac <span>↓</span></a
-          ><a
-            class="button"
-            href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-windows-x64-setup.exe"
-            >Download for Windows <span>↓</span></a
+            data-primary-download
+            href="https://github.com/ackkerman/kbsd/releases/latest"
+            ><span id="download-label">Download kbsd</span
+            ><span aria-hidden="true">↓</span></a
           >
+          <p class="release-note" id="download-requirements">
+            v1.0.0 · For macOS and Windows
+          </p>
+          <details class="download-alternatives">
+            <summary>
+              <span id="download-alternatives-label">Choose your platform</span>
+            </summary>
+            <div class="download-options">
+              <div class="download-option" data-download-option="mac">
+                <a
+                  data-download-platform="mac"
+                  href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-macos-arm64.zip"
+                >
+                  <strong data-download-title>Download for Mac</strong>
+                  <span data-download-requirements
+                    >Apple Silicon · macOS 14+</span
+                  >
+                </a>
+              </div>
+              <div class="download-option" data-download-option="windows">
+                <a
+                  data-download-platform="windows"
+                  href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-windows-x64-setup.exe"
+                >
+                  <strong data-download-title>Download for Windows</strong>
+                  <span data-download-requirements
+                    >Windows 10/11 x64 · .NET included</span
+                  >
+                </a>
+              </div>
+              <div class="download-option">
+                <a
+                  href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-windows-x64.zip"
+                >
+                  <strong>Windows portable ZIP</strong>
+                  <span>Extract the whole folder · .NET included</span>
+                </a>
+              </div>
+            </div>
+          </details>
         </div>
-        <p class="release-note">
-          v1.0.0 · Mac: Apple Silicon, macOS 14+ · Windows: 10/11 x64
-        </p>
-        <p class="release-note">
-          <a
-            href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-windows-x64.zip"
-            >Windows portable ZIP</a
-          >
-          · .NET runtime included in both Windows downloads
-        </p>
       </section>
       <section class="experience" id="sounds" aria-labelledby="sound-heading">
         <div class="experience-head">
@@ -255,6 +284,7 @@
         <h2>Your keyboard.<br />A little more you.</h2>
         <a
           class="button primary"
+          data-primary-download
           href="https://github.com/ackkerman/kbsd/releases/latest"
           >Get kbsd <span>↓</span></a
         >
