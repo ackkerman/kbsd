@@ -7,7 +7,14 @@ $installerPath = (Resolve-Path -LiteralPath $Installer).Path
 $uninstallKey = 'HKCU:/Software/Microsoft/Windows/CurrentVersion/Uninstall/com.ackkerman.kbsd.windows_is1'
 $shortcut = Join-Path ([Environment]::GetFolderPath('Programs')) 'kbsd.lnk'
 $runKey = 'HKCU:/Software/Microsoft/Windows/CurrentVersion/Run'
-$originalRun = Get-ItemPropertyValue -LiteralPath $runKey -Name 'kbsd' -ErrorAction SilentlyContinue
+
+function Get-LoginCommand {
+    $key = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Software\Microsoft\Windows\CurrentVersion\Run')
+    try { if ($key) { $key.GetValue('kbsd') } }
+    finally { if ($key) { $key.Dispose() } }
+}
+
+$originalRun = Get-LoginCommand
 # Never replace a user's existing installation, shortcut or login item during verification.
 if ((Test-Path -LiteralPath $uninstallKey) -or (Test-Path -LiteralPath $shortcut) -or $originalRun) {
     throw 'Installer verification requires no existing kbsd installation, Start shortcut or login registration.'
@@ -48,7 +55,7 @@ try {
     $link = $shell.CreateShortcut($shortcut)
     $executable = Join-Path $installed 'kbsd.exe'
     Assert-Installer ($link.TargetPath -eq $executable -and $link.WorkingDirectory -eq $installed) 'Start shortcut does not target the installed app.'
-    Assert-Installer (-not (Get-ItemPropertyValue -LiteralPath $runKey -Name 'kbsd' -ErrorAction SilentlyContinue)) 'Installation unexpectedly enabled launch at login.'
+    Assert-Installer (-not (Get-LoginCommand)) 'Installation unexpectedly enabled launch at login.'
     $recordings = Get-ChildItem -LiteralPath (Join-Path $installed 'Sounds') -Recurse -File -Filter '*.wav'
     Assert-Installer ($recordings.Count -eq 182) 'Installer did not retain all 182 recordings.'
     foreach ($recording in $recordings) {
@@ -80,10 +87,10 @@ try {
     if ($env:GITHUB_ACTIONS -eq 'true') {
         $ownsRunFixture = $true
         $portableCommand = '"C:\portable-kbsd\kbsd.exe" --background'
-        New-Item -Path $runKey -Force | Out-Null
+        if (-not (Test-Path -LiteralPath $runKey)) { New-Item -Path $runKey | Out-Null }
         Set-ItemProperty -LiteralPath $runKey -Name 'kbsd' -Value $portableCommand
         Invoke-Uninstall
-        Assert-Installer ((Get-ItemPropertyValue -LiteralPath $runKey -Name kbsd) -eq $portableCommand) 'Uninstall removed another portable app login item.'
+        Assert-Installer ((Get-LoginCommand) -eq $portableCommand) 'Uninstall removed another portable app login item.'
         Remove-ItemProperty -LiteralPath $runKey -Name kbsd
         Invoke-Setup
         Set-ItemProperty -LiteralPath $runKey -Name kbsd -Value ('"{0}" --background' -f $executable)
@@ -93,7 +100,7 @@ try {
     Assert-Installer (-not (Test-Path -LiteralPath $uninstallKey)) 'Uninstall left the Installed Apps entry.'
     Assert-Installer (-not (Test-Path -LiteralPath $executable)) 'Uninstall left the app executable.'
     Assert-Installer (Test-Path -LiteralPath $sentinel) 'Uninstall deleted user preferences.'
-    Assert-Installer (-not (Get-ItemPropertyValue -LiteralPath $runKey -Name kbsd -ErrorAction SilentlyContinue)) 'Uninstall left the installed app login item.'
+    Assert-Installer (-not (Get-LoginCommand)) 'Uninstall left the installed app login item.'
     'PASS: install, 182 original recordings, Start shortcut, background activation, reinstall, uninstall and preserved preferences.'
 } finally {
     if ($app -and -not $app.HasExited) { Stop-Process -Id $app.Id; $app.WaitForExit() }
