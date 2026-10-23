@@ -8,9 +8,16 @@ A native keyboard-sound companion for Mac and Windows. Seven sound sets, separat
 
 ## Download
 
-The published v1.0.0 release below is for macOS. The Windows 10/11 x64 implementation and build instructions are in [windows/README.md](windows/README.md); a Windows release has not been published yet. Windows packaging includes the .NET runtime and all original recordings.
+| Platform | Download | Requirements |
+| --- | --- | --- |
+| Windows | [kbsd-v1.0.0-windows-x64.zip](https://github.com/ackkerman/kbsd/releases/download/v1.0.0/kbsd-v1.0.0-windows-x64.zip) | Windows 10/11 x64 |
+| macOS | [kbsd-v1.0.0-macos-arm64.zip](https://github.com/ackkerman/kbsd/releases/download/v1.0.0/kbsd-v1.0.0-macos-arm64.zip) | Apple Silicon, macOS 14+ |
 
-Get `kbsd-v1.0.0-macos-arm64.zip` from [GitHub Releases](https://github.com/ackkerman/kbsd/releases/latest), unzip it, and move `kbsd.app` to Applications.
+On Windows, extract the entire ZIP and run `kbsd.exe`. The .NET runtime and all original recordings are included; keep `Sounds/` and the runtime files alongside the executable. No administrator access is required. This build is not Authenticode signed. See [Windows setup and build instructions](windows/README.md).
+
+The Windows build was added to v1.0.0 from [07db88a](https://github.com/ackkerman/kbsd/tree/07db88a7e2b95ca3add3639f9e5ac0a4373edfca/windows). The original macOS archive and tag are retained. Use `SHA256SUMS-all.txt` in the release to verify either archive; the original `SHA256SUMS.txt` remains available for the macOS archive.
+
+On macOS, unzip `kbsd-v1.0.0-macos-arm64.zip` and move `kbsd.app` to Applications.
 
 - Apple Silicon, macOS 14 or later.
 - This release uses a fixed local code-signing certificate and is **not Developer ID signed or notarized**. macOS may show a security warning. Review the source and [Apple's guidance](https://support.apple.com/en-us/102445) before opening it.
