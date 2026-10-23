@@ -8,12 +8,14 @@
 ### To-Do
 - [x] OS判定、主ボタンと補助リンク、キーボードで開閉できる折りたたみを実装する。
 - [x] Windows・Mac・モバイル・不明なOSの判定と表示、狭い画面を検証する。
-- [ ] make checkと配信出力テストを実行し、ソースを公開する。
-- [ ] Wrangler CLIで本番公開し、公開URLの表示とリンクを確認する。
+- [x] make checkと配信出力テストを実行し、ソースを公開する。
+- [x] Wrangler CLIで本番公開し、公開URLの表示とリンクを確認する。
 
 ### 検証結果
 - make check成功。Web 12件、Windows 11シナリオと182録音診断、配信出力4件が成功した。
 - Windowsの実ブラウザーとMac / 不明なOSの入力を指定した独立fixtureで、3箇所の主リンク、他方のOS用リンク、Enter / Spaceによる開閉を確認した。CSS幅390px / 1280pxで横はみ出しはなく、端末情報の保存・送信や本番向けの検証用パラメーターは追加していない。
+- Windows / macOS / WebのCI成功を確認してPR #4をマージした。Wrangler CLIで既存kbsdプロジェクトのmainへ公開した（https://1b1064e4.kbsd.pages.dev/）。
+- 独自ドメインのHTTPS 200とビルド出力の一致、Windows用主ボタンと折りたたみ内のMacリンク、3種類の配布URLの200応答、試聴完了とコンソールエラーなしを確認した。
 
 ## Windowsインストーラー
 
