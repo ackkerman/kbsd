@@ -1,10 +1,32 @@
 // This file guarantees executable scenarios for privacy, physical input, persistence and actual PCM rendering.
 using System.Text;
 using Kbsd.Core;
+using Kbsd.Desktop;
 
 var root = args.Length == 1 ? args[0] : Path.GetFullPath("public/assets/sounds/preview");
 var tests = new (string Name, Action Run)[]
 {
+    ("Given a background instance, when launched again, then only that instance receives Settings requests", () =>
+    {
+        // Given an isolated session identity, multiple launches share one tray owner.
+        var name = $"kbsd-test-{Guid.NewGuid():N}";
+        using (var first = new SingleInstanceActivation(name))
+        using (var next = new SingleInstanceActivation(name))
+        using (var received = new AutoResetEvent(false))
+        {
+            Equal(true, first.IsFirstInstance);
+            Equal(false, next.IsFirstInstance);
+            first.Listen(() => received.Set());
+            // When two successive launches request Settings, both reach the existing process.
+            next.RequestSettings();
+            Equal(true, received.WaitOne(TimeSpan.FromSeconds(5)));
+            next.RequestSettings();
+            Equal(true, received.WaitOne(TimeSpan.FromSeconds(5)));
+        }
+        // Then exiting releases the identity so a later launch becomes the tray owner.
+        using var relaunched = new SingleInstanceActivation(name);
+        Equal(true, relaunched.IsFirstInstance);
+    }),
     ("Given invalid preferences, when validated, then sound values recover within bounds", () =>
     {
         var valid = new SoundSettings { Volume = double.NaN, Pitch = double.PositiveInfinity, SwitchSet = "../outside" }.Validate();

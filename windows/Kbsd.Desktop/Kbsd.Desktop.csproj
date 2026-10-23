@@ -6,6 +6,7 @@
     <AssemblyName>kbsd</AssemblyName>
     <Version>1.0.0</Version>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Brand.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Using Include="System.IO" />

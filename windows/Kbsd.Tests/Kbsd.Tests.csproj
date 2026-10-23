@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
   <ItemGroup><ProjectReference Include="../Kbsd.Core/Kbsd.Core.csproj" /></ItemGroup>
+  <ItemGroup><Compile Include="../Kbsd.Desktop/SingleInstanceActivation.cs" Link="SingleInstanceActivation.cs" /></ItemGroup>
 </Project>
