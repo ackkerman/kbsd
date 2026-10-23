@@ -30,6 +30,18 @@
 ## 目的
 macOS用キーボードサウンドアプリkbsdのソースを公開し、GitHub ReleaseとCloudflare PagesのLPを相互リンクする。
 
+## Windows / MacのRelease配布
+- [x] Windows対応PR #1のマージとWindows / macOS / WebのCI成功を確認する。
+- [x] 既存v1.0.0の固定署名済みMac ZIP・チェックサム・Release情報を退避する。
+- [x] CIで生成したWindows ZIPを検証し、既存Releaseへ追加する。
+- [x] 既存Mac ZIPとチェックサムを維持し、両OS用のSHA256SUMS-all.txtと説明を追加する。
+- [x] 両OSの公開URLから再取得してSHA256を確認する。
+- [ ] READMEとLPのダウンロード案内の更新PRをマージする。
+
+Macアプリのコードに変更がないため、既存の固定署名済みMac ZIPのバイト列とダウンロードURLを維持する。Windows版は検証済みコミットに対応するCI成果物を使用し、Release本文から対応ソースへリンクする。既存タグは移動しない。LPのデプロイはこの作業では実施しない。
+
+Windows成果物は182録音のバイト一致、ランタイムの権利表記3ファイル、182音源の実ミキサー診断と実デバイスへの非ゼロPCM送信を検証済み。両ZIPを公開URLから匿名で再取得し、両OS用チェックサムとの一致を確認した。Mac ZIPと元のMac用チェックサムは既存のバイト列を維持している。README / LPの案内変更に対するmake checkと配信出力4テストも成功した。
+
 ## 進捗
 - [x] GitHubリポジトリの空状態とpush権限、Cloudflare Pagesへの公開権限を確認する
 - [x] ライセンス方針を確認する（ユーザー指定: 未指定）

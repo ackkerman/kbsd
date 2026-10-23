@@ -10,6 +10,13 @@ test("the landing page and repository link to each other and the release downloa
   assert.ok(
     html.includes("/releases/latest/download/kbsd-v1.0.0-macos-arm64.zip"),
   );
+  assert.ok(
+    html.includes("/releases/latest/download/kbsd-v1.0.0-windows-x64.zip"),
+  );
+  assert.ok(
+    readme.includes("/releases/download/v1.0.0/kbsd-v1.0.0-windows-x64.zip"),
+  );
+  assert.ok(!html.includes("A Windows download has not been published yet"));
   assert.ok(readme.includes("https://kbsd.0xdope.com"));
   assert.ok(!html.includes("buy.stripe.com"));
   assert.ok(!html.includes("original keyboard sounds"));
