@@ -70,10 +70,13 @@ npm run dev -- --host 0.0.0.0 --port 4173
 npm run build
 ```
 
-The static output is `dist/client`. Cloudflare Pages deployment:
+The static output is `dist/client`. Publish to the existing Cloudflare Pages project with the Wrangler CLI. Run the login command once and approve it in your browser; later deployments reuse that authentication:
 
 ```sh
-wrangler pages deploy dist/client --project-name kbsd --branch main
+npx wrangler@4.152.0 login --scopes account:read user:read pages:write
+npm run build
+npm run test:sites
+npx wrangler@4.152.0 pages deploy dist/client --project-name kbsd --branch main
 ```
 
 ## Source and assets

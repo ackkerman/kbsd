@@ -19,6 +19,9 @@
 - Windowsでは`make check`と`make windows-package`、macOSでは従来の`make check`を実行する。Windows CIはZIPを成果物に保存し、自動公開しない。
 
 ## 正常系
+- Given Windows / Macの閲覧端末、Then 主ダウンロード・ヘッダー・末尾CTAが対応する配布物へリンクし、他方のOSとportable ZIPは折りたたみから選択できる。
+- Given モバイル・Macを名乗るiPad・不明なOS・JavaScript無効、Then デスクトップ用インストーラーを自動選択せず、両OSの配布物へ到達できる。
+- Given 折りたたみにキーボードでフォーカス、When Enter / Spaceで開閉、Then 展開状態を読み上げ、狭い画面でも補助リンクが横にはみ出さない。
 - 7音色の上下音を選択・試聴できる。
 - 音量、ピッチ、左右の広がり、修飾キー、マウス音を設定できる。
 - 当日・累計統計と設定が再起動後も復元される。

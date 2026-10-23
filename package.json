@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check src tests index.html vite.config.ts",
     "format": "prettier --write src tests index.html vite.config.ts",
-    "test": "node --experimental-strip-types --test tests/preview.test.mjs tests/assets.test.mjs tests/publication.test.mjs"
+    "test": "node --experimental-strip-types --test tests/preview.test.mjs tests/assets.test.mjs tests/publication.test.mjs tests/platform-downloads.test.mjs"
   },
   "devDependencies": {
     "prettier": "3.9.10",
