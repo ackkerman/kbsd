@@ -22,3 +22,22 @@ jobs:
       - run: python3 -m unittest discover -s native/Tests/SigningTests
       - run: swift test --package-path native
       - run: bash native/scripts/package-app.sh
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Format, build, test and diagnose all recordings
+        shell: pwsh
+        run: ./windows/scripts/check.ps1
+      - name: Build self-contained ZIP
+        shell: pwsh
+        run: ./windows/scripts/package.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kbsd-windows-x64
+          path: |
+            dist/windows/*.zip
+            dist/windows/SHA256SUMS.txt
