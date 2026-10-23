@@ -1,0 +1,62 @@
+<!-- This file guarantees the same settings hierarchy and sound-card layout as the Swift application. -->
+<UserControl x:Class="Kbsd.Desktop.SettingsContent" x:ClassModifier="internal"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ FontFamily="Segoe UI" FontSize="13" Foreground="#282C2E" Background="#FCFCFD" UseLayoutRounding="True">
+ <UserControl.Resources><ResourceDictionary Source="SettingsStyles.xaml"/></UserControl.Resources>
+ <Grid>
+  <Grid.ColumnDefinitions><ColumnDefinition Width="184"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+  <Border Background="#E8EEEF" BorderBrush="#DDE3E4" BorderThickness="0,0,1,0">
+   <DockPanel>
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="20,27,15,30">
+     <Image Source="Brand.png" Width="38" Height="38" Margin="0,0,11,0"/>
+     <StackPanel><TextBlock Text="kbsd" FontSize="22" FontWeight="Bold"/><TextBlock Text="Every keystroke." Foreground="#737B7C" FontSize="11" Margin="0,3,0,0"/></StackPanel>
+    </StackPanel>
+    <StackPanel DockPanel.Dock="Bottom" Margin="20,18"><StackPanel Orientation="Horizontal"><Ellipse x:Name="StatusDot" Fill="#18A4AC" Width="6" Height="6" Margin="0,0,7,0"/><TextBlock x:Name="SidebarStatus" FontSize="11" Foreground="#727B7C" Text="Sound is on"/></StackPanel></StackPanel>
+    <StackPanel>
+     <RadioButton GroupName="Navigation" Style="{StaticResource Nav}" Click="Navigate" Tag="0" IsChecked="True" AutomationProperties.Name="Switches"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE765;" FontFamily="Segoe MDL2 Assets" Margin="0,2,12,0"/><TextBlock Text="Switches"/></StackPanel></RadioButton>
+     <RadioButton GroupName="Navigation" Style="{StaticResource Nav}" Click="Navigate" Tag="1" AutomationProperties.Name="Sound"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE767;" FontFamily="Segoe MDL2 Assets" Margin="0,2,12,0"/><TextBlock Text="Sound"/></StackPanel></RadioButton>
+     <RadioButton GroupName="Navigation" Style="{StaticResource Nav}" Click="Navigate" Tag="2" AutomationProperties.Name="General"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" Margin="0,2,12,0"/><TextBlock Text="General"/></StackPanel></RadioButton>
+     <RadioButton GroupName="Navigation" Style="{StaticResource Nav}" Click="Navigate" Tag="3" AutomationProperties.Name="Statistics"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE9D9;" FontFamily="Segoe MDL2 Assets" Margin="0,2,12,0"/><TextBlock Text="Statistics"/></StackPanel></RadioButton>
+    </StackPanel>
+   </DockPanel>
+  </Border>
+  <Grid Grid.Column="1" Margin="30,28,24,20">
+   <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+   <Grid Margin="0,0,6,24"><StackPanel><TextBlock x:Name="PageTitle" Text="Switches" FontSize="28" FontWeight="Bold"/><TextBlock x:Name="PageSubtitle" Text="Find your favorite feeling." Style="{StaticResource Muted}" FontSize="13" Margin="0,6,60,0"/></StackPanel><CheckBox x:Name="EnabledToggle" Style="{StaticResource Switch}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0" AutomationProperties.Name="Enable keyboard sounds" Click="ChangeSettings"/></Grid>
+   <Border x:Name="ErrorPanel" Grid.Row="1" Background="#FFF4E8" CornerRadius="10" Padding="13" Margin="0,0,6,16" Visibility="Collapsed"><DockPanel><Button DockPanel.Dock="Right" Content="Retry" Margin="12,0,0,0" Click="Retry"/><TextBlock x:Name="ErrorText" Foreground="#925B32" TextWrapping="Wrap" VerticalAlignment="Center"/></DockPanel></Border>
+   <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="0,0,6,0">
+    <Grid>
+     <StackPanel x:Name="SwitchesPage">
+      <UniformGrid x:Name="SwitchCards" Columns="2" Margin="-6,0,-6,0"/>
+      <TextBlock Text="TRY IT OUT" FontWeight="SemiBold" FontSize="10" Foreground="#858B8D" Margin="0,20,0,10"/>
+      <Button x:Name="TypingTest" Content="Click here, then start typing…" Height="62" HorizontalContentAlignment="Left" Background="White" BorderBrush="#E3E6E7" BorderThickness="1" Foreground="#7D8385" Click="FocusTypingTest" PreviewKeyDown="TypingKeyDown" PreviewKeyUp="TypingKeyUp" AutomationProperties.Name="Keyboard sound test. Click and type; no text is recorded."/>
+     </StackPanel>
+     <StackPanel x:Name="SoundPage" Visibility="Collapsed">
+      <Border Style="{StaticResource Panel}"><StackPanel>
+       <DockPanel><TextBlock Text="Volume" FontWeight="SemiBold"/><TextBlock x:Name="VolumeValue" HorizontalAlignment="Right" Foreground="#818789"/></DockPanel>
+       <Slider x:Name="VolumeSlider" Minimum="0" Maximum="100" Margin="0,10,0,0" ValueChanged="ChangeSlider" AutomationProperties.Name="Sound volume"/>
+       <Border Height="1" Background="#EDEFF0" Margin="0,14"/>
+       <DockPanel><TextBlock Text="Pitch" FontWeight="SemiBold"/><TextBlock x:Name="PitchValue" HorizontalAlignment="Right" Foreground="#818789"/></DockPanel>
+       <Slider x:Name="PitchSlider" Minimum="-6" Maximum="6" TickFrequency="0.5" IsSnapToTickEnabled="True" Margin="0,10,0,0" ValueChanged="ChangeSlider" AutomationProperties.Name="Pitch"/>
+      </StackPanel></Border>
+      <Border Style="{StaticResource Panel}"><StackPanel x:Name="SoundOptions"/></Border>
+      <DockPanel><Button x:Name="SoundPreview" DockPanel.Dock="Right" Content="Preview sound" Click="PreviewSelected"/><TextBlock Text="Press and release sounds are always paired." Style="{StaticResource Muted}" FontSize="10" VerticalAlignment="Center"/></DockPanel>
+     </StackPanel>
+     <StackPanel x:Name="GeneralPage" Visibility="Collapsed">
+      <Border Style="{StaticResource Panel}"><StackPanel><TextBlock x:Name="AccessTitle" Text="Keyboard access is enabled" FontWeight="SemiBold" FontSize="14"/><TextBlock x:Name="AccessDetail" Text="kbsd is ready to play in your other apps." Style="{StaticResource Muted}" Margin="0,7,0,14"/><TextBlock Text="kbsd uses physical key events to play sounds. It never reads typed text, records your keystrokes, or sends input anywhere." Style="{StaticResource Muted}"/><Button Content="Check again" Click="Retry" HorizontalAlignment="Left" Margin="0,14,0,0"/></StackPanel></Border>
+      <Border Style="{StaticResource Panel}"><StackPanel x:Name="GeneralOptions"/></Border>
+      <TextBlock Text="Keep the extracted app folder in one place before enabling launch at login. Windows Startup settings can separately disable a registered item." Style="{StaticResource Muted}" Margin="0,0,0,20"/>
+      <StackPanel Orientation="Horizontal"><Image Source="Brand.png" Width="40" Height="40" Margin="0,0,12,0"/><StackPanel VerticalAlignment="Center"><TextBlock Text="kbsd" FontWeight="SemiBold"/><TextBlock Text="Version 1.0.0 · Native for Windows" Style="{StaticResource Muted}" FontSize="11" Margin="0,4,0,0"/></StackPanel></StackPanel>
+     </StackPanel>
+     <StackPanel x:Name="StatisticsPage" Visibility="Collapsed">
+      <UniformGrid Columns="2" Margin="-6,0,-6,18">
+       <Border Style="{StaticResource Panel}" Margin="6,0" Padding="22"><StackPanel><TextBlock Text="&#xE706;" FontFamily="Segoe MDL2 Assets" Foreground="#18A4AC" FontSize="22"/><TextBlock x:Name="TodayCount" Text="0" FontSize="35" FontWeight="Bold" Margin="0,16"/><TextBlock Text="Keystrokes today" Style="{StaticResource Muted}"/></StackPanel></Border>
+       <Border Style="{StaticResource Panel}" Margin="6,0" Padding="22"><StackPanel><TextBlock Text="&#xE765;" FontFamily="Segoe MDL2 Assets" Foreground="#18A4AC" FontSize="22"/><TextBlock x:Name="TotalCount" Text="0" FontSize="35" FontWeight="Bold" Margin="0,16"/><TextBlock Text="All-time keystrokes" Style="{StaticResource Muted}"/></StackPanel></Border>
+      </UniformGrid>
+      <Border Style="{StaticResource Panel}"><StackPanel><TextBlock Text="Just the numbers." FontWeight="SemiBold" FontSize="14"/><TextBlock Text="Only your daily and total counts are saved on this PC. Your actual keystrokes and typed text are never stored. Sound previews are not counted." Style="{StaticResource Muted}" Margin="0,10,0,0"/></StackPanel></Border>
+     </StackPanel>
+    </Grid>
+   </ScrollViewer>
+  </Grid>
+ </Grid>
+</UserControl>

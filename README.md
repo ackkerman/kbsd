@@ -1,12 +1,14 @@
 # kbsd
 
-A native keyboard-sound companion for Mac. Seven sound sets, separate press and release sounds, and a small home in your menu bar.
+A native keyboard-sound companion for Mac and Windows. Seven sound sets, separate press and release sounds, and a small home in your menu bar or notification area.
 
 **[Website & sound previews](https://kbsd.0xdope.com)** · **[Download the latest release](https://github.com/ackkerman/kbsd/releases/latest)**
 
 ![kbsd settings](public/assets/images/app-preview.png)
 
 ## Download
+
+The published v1.0.0 release below is for macOS. The Windows 10/11 x64 implementation and build instructions are in [windows/README.md](windows/README.md); a Windows release has not been published yet. Windows packaging includes the .NET runtime and all original recordings.
 
 Get `kbsd-v1.0.0-macos-arm64.zip` from [GitHub Releases](https://github.com/ackkerman/kbsd/releases/latest), unzip it, and move `kbsd.app` to Applications.
 
@@ -29,7 +31,7 @@ The sound bank uses 13 sample key pairs per set; other physical keys reuse sampl
 
 ## Build
 
-Requires Xcode command-line tools with Swift 6+, Node.js 22.6+, Python 3, and macOS.
+Requires Node.js 22.6+. On macOS, also install Xcode command-line tools with Swift 6+ and Python 3. On Windows, install .NET 10 SDK and PowerShell 7.
 
 ```sh
 npm ci
@@ -37,7 +39,12 @@ make check
 make native-run
 ```
 
-`make check` runs web formatting/types/tests/build and native formatting/tests/package diagnostics. It produces `dist/kbsd.app`. The diagnostic schedules all 182 recordings through the audio graph and checks finite, non-silent output.
+`make check` runs web formatting/types/tests/build and the current platform's native formatting/tests/audio diagnostics. On macOS it produces `dist/kbsd.app`; on Windows it checks the Windows Forms app. Both diagnostic paths schedule all 182 recordings through the playback mixer and check finite, non-silent output.
+
+```powershell
+make windows-run       # Windows settings and tray
+make windows-package   # dist/windows/ZIP + SHA256SUMS.txt
+```
 
 ```sh
 make release   # dist/release/ZIP + SHA256SUMS.txt

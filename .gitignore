@@ -1,6 +1,8 @@
 node_modules/
 dist/
 native/.build/
+windows/**/bin/
+windows/**/obj/
 .local/
 evidence/
 .wrangler/
