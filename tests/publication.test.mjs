@@ -14,6 +14,16 @@ test("the landing page and repository link to each other and the release downloa
     html.includes("/releases/latest/download/kbsd-v1.0.0-windows-x64.zip"),
   );
   assert.ok(
+    html.includes(
+      "/releases/latest/download/kbsd-v1.0.0-windows-x64-setup.exe",
+    ),
+  );
+  assert.ok(
+    readme.includes(
+      "/releases/download/v1.0.0/kbsd-v1.0.0-windows-x64-setup.exe",
+    ),
+  );
+  assert.ok(
     readme.includes("/releases/download/v1.0.0/kbsd-v1.0.0-windows-x64.zip"),
   );
   assert.ok(!html.includes("A Windows download has not been published yet"));

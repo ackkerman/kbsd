@@ -45,7 +45,7 @@
      <StackPanel x:Name="GeneralPage" Visibility="Collapsed">
       <Border Style="{StaticResource Panel}"><StackPanel><TextBlock x:Name="AccessTitle" Text="Keyboard access is enabled" FontWeight="SemiBold" FontSize="14"/><TextBlock x:Name="AccessDetail" Text="kbsd is ready to play in your other apps." Style="{StaticResource Muted}" Margin="0,7,0,14"/><TextBlock Text="kbsd uses physical key events to play sounds. It never reads typed text, records your keystrokes, or sends input anywhere." Style="{StaticResource Muted}"/><Button Content="Check again" Click="Retry" HorizontalAlignment="Left" Margin="0,14,0,0"/></StackPanel></Border>
       <Border Style="{StaticResource Panel}"><StackPanel x:Name="GeneralOptions"/></Border>
-      <TextBlock Text="Keep the extracted app folder in one place before enabling launch at login. Windows Startup settings can separately disable a registered item." Style="{StaticResource Muted}" Margin="0,0,0,20"/>
+      <TextBlock Text="Launch at login is optional. For a portable ZIP, keep the extracted folder in one place. Windows Startup settings can separately disable a registered item." Style="{StaticResource Muted}" Margin="0,0,0,20"/>
       <StackPanel Orientation="Horizontal"><Image Source="Brand.png" Width="40" Height="40" Margin="0,0,12,0"/><StackPanel VerticalAlignment="Center"><TextBlock Text="kbsd" FontWeight="SemiBold"/><TextBlock Text="Version 1.0.0 · Native for Windows" Style="{StaticResource Muted}" FontSize="11" Margin="0,4,0,0"/></StackPanel></StackPanel>
      </StackPanel>
      <StackPanel x:Name="StatisticsPage" Visibility="Collapsed">

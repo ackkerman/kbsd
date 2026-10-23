@@ -52,10 +52,12 @@ native-signing-test: ## 固定署名の選択と後戻り防止を検証
 native-check: native-signing-test
 
 DOTNET ?= dotnet
-.PHONY: windows-check windows-package windows-run
+.PHONY: windows-check windows-package windows-installer windows-run
 windows-check: ## Windowsのフォーマット・ビルド・テスト・182音源診断
 	pwsh -NoProfile -File windows/scripts/check.ps1 -Dotnet "$(DOTNET)"
 windows-package: ## Windows x64用ZIPとSHA256を生成
 	pwsh -NoProfile -File windows/scripts/package.ps1 -Dotnet "$(DOTNET)"
+windows-installer: windows-package ## WindowsのインストーラーとSHA256を生成（Inno Setupが必要）
+	pwsh -NoProfile -File windows/scripts/installer.ps1
 windows-run: ## Windowsの設定画面と通知領域アプリを起動
 	$(DOTNET) run --project windows/Kbsd.Desktop -c Release

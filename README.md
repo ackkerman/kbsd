@@ -10,12 +10,15 @@ A native keyboard-sound companion for Mac and Windows. Seven sound sets, separat
 
 | Platform | Download | Requirements |
 | --- | --- | --- |
-| Windows | [kbsd-v1.0.0-windows-x64.zip](https://github.com/ackkerman/kbsd/releases/download/v1.0.0/kbsd-v1.0.0-windows-x64.zip) | Windows 10/11 x64 |
+| Windows installer | [kbsd-v1.0.0-windows-x64-setup.exe](https://github.com/ackkerman/kbsd/releases/download/v1.0.0/kbsd-v1.0.0-windows-x64-setup.exe) | Windows 10/11 x64 |
+| Windows portable | [kbsd-v1.0.0-windows-x64.zip](https://github.com/ackkerman/kbsd/releases/download/v1.0.0/kbsd-v1.0.0-windows-x64.zip) | Windows 10/11 x64 |
 | macOS | [kbsd-v1.0.0-macos-arm64.zip](https://github.com/ackkerman/kbsd/releases/download/v1.0.0/kbsd-v1.0.0-macos-arm64.zip) | Apple Silicon, macOS 14+ |
 
-On Windows, extract the entire ZIP and run `kbsd.exe`. The .NET runtime and all original recordings are included; keep `Sounds/` and the runtime files alongside the executable. No administrator access is required. This build is not Authenticode signed. See [Windows setup and build instructions](windows/README.md).
+On Windows, run the installer, then search for **kbsd** in the Start menu. It installs for the current user and appears in **Settings → Apps → Installed apps** for removal. Launching it again opens the existing tray app's Settings window. Enable **General → Launch at login** if you want it to start when you sign in; installation does not turn this on automatically.
 
-The Windows build was added to v1.0.0 from [07db88a](https://github.com/ackkerman/kbsd/tree/07db88a7e2b95ca3add3639f9e5ac0a4373edfca/windows). The original macOS archive and tag are retained. Use `SHA256SUMS-all.txt` in the release to verify either archive; the original `SHA256SUMS.txt` remains available for the macOS archive.
+The portable ZIP remains available: extract the entire folder and run `kbsd.exe`, keeping `Sounds/` and the runtime files alongside it. Both Windows downloads include .NET and all original recordings, require no administrator access, and are not Authenticode signed. See [Windows setup and build instructions](windows/README.md).
+
+Windows artifacts were added to the existing v1.0.0 release; their matching source revisions are linked in the release notes. The original macOS archive, portable ZIP and tag are retained. Use `SHA256SUMS-all.txt` in the release to verify downloads; `SHA256SUMS-setup.txt` also covers the installer and the original `SHA256SUMS.txt` remains available for the macOS archive.
 
 On macOS, unzip `kbsd-v1.0.0-macos-arm64.zip` and move `kbsd.app` to Applications.
 
@@ -51,6 +54,7 @@ make native-run
 ```powershell
 make windows-run       # Windows settings and tray
 make windows-package   # dist/windows/ZIP + SHA256SUMS.txt
+make windows-installer # ZIP + Setup EXE + SHA256 (requires Inno Setup 6.3+)
 ```
 
 ```sh

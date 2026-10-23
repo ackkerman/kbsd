@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Meet kbsd: seven keyboard sound sets, a tiny menu bar companion, and a little more joy in every keystroke. Built for Mac."
+      content="Meet kbsd: seven keyboard sound sets, a quiet desktop companion, and a little more joy in every keystroke. Built for Mac and Windows."
     />
     <meta name="theme-color" content="#faf7ef" />
     <meta
@@ -14,7 +14,7 @@
     />
     <meta
       property="og:description"
-      content="Seven keyboard sound sets. Native for Mac. Download kbsd on GitHub."
+      content="Seven keyboard sound sets. Native for Mac and Windows. Download kbsd on GitHub."
     />
     <meta property="og:url" content="https://kbsd.0xdope.com/" />
     <link rel="canonical" href="https://kbsd.0xdope.com/" />
@@ -42,30 +42,34 @@
     </header>
     <main>
       <section class="hero">
-        <p class="eyebrow"><span></span> A SMALL COMPANION FOR YOUR MAC</p>
+        <p class="eyebrow"><span></span> A SMALL COMPANION FOR YOUR DESKTOP</p>
         <h1>A little more <em>feel</em><br />in every keystroke.</h1>
         <p class="intro">
           Turn everyday typing into something you look forward to.<br
             class="desktop-break"
           />
-          Seven sound sets. Your own rhythm. Quietly in the menu bar.
+          Seven sound sets. Your own rhythm. Quietly in the background.
         </p>
         <div class="hero-actions">
           <a
             class="button primary"
             href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-macos-arm64.zip"
             >Download for Mac <span>↓</span></a
-          ><a class="text-link" href="#sounds"
-            >Find your sound <span>↘</span></a
+          ><a
+            class="button"
+            href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-windows-x64-setup.exe"
+            >Download for Windows <span>↓</span></a
           >
         </div>
-        <p class="release-note">v1.0.0 · Apple Silicon · macOS 14+</p>
+        <p class="release-note">
+          v1.0.0 · Mac: Apple Silicon, macOS 14+ · Windows: 10/11 x64
+        </p>
         <p class="release-note">
           <a
             href="https://github.com/ackkerman/kbsd/releases/latest/download/kbsd-v1.0.0-windows-x64.zip"
-            >Download for Windows x64 ↓</a
+            >Windows portable ZIP</a
           >
-          · Windows 10/11 · .NET runtime included
+          · .NET runtime included in both Windows downloads
         </p>
       </section>
       <section class="experience" id="sounds" aria-labelledby="sound-heading">
@@ -111,7 +115,9 @@
             />
             <div class="showcase-caption">
               <strong>Small app. Big typing energy.</strong
-              ><span>Always one click away in your menu bar.</span>
+              ><span
+                >Always close by in your menu bar or notification area.</span
+              >
             </div>
           </div>
         </div>
@@ -138,7 +144,7 @@
           <h3>Just sound. Just here.</h3>
           <p>
             No accounts, no typing logs, no input sent anywhere. Settings and
-            aggregate counts stay on your Mac.
+            aggregate counts stay on your computer.
           </p>
         </article>
       </section>
@@ -151,9 +157,10 @@
           <li>
             <span>01</span>
             <div>
-              <h3>Download & open</h3>
+              <h3>Download & install</h3>
               <p>
-                Unzip kbsd and move it to Applications. This first release is
+                On Windows, run the installer and search for kbsd in Start. On
+                Mac, unzip kbsd and move it to Applications. The Mac release is
                 locally signed and isn’t notarized. macOS may show a security
                 warning; review the source and Apple’s opening instructions
                 before proceeding.
@@ -165,9 +172,10 @@
             <div>
               <h3>Allow keyboard access</h3>
               <p>
-                Open General in kbsd, then Open System Settings. Allow kbsd in
-                Accessibility (called Device Control & Data Access on some macOS
-                versions). No permission is needed for in-app previews.
+                Windows is ready without extra permissions. On Mac, open General
+                in kbsd, then Open System Settings. Allow kbsd in Accessibility
+                (called Device Control & Data Access on some macOS versions). No
+                permission is needed for in-app previews.
               </p>
             </div>
           </li>
@@ -188,10 +196,24 @@
         <details>
           <summary>Which computers can run kbsd?</summary>
           <p>
-            The v1.0.0 download is for Apple Silicon Macs running macOS 14 or
-            later, with a separate Windows 10/11 x64 download. An Intel Mac
-            build is not included. On Windows, extract the whole ZIP and run
-            kbsd.exe; the .NET runtime is included.
+            kbsd runs on Apple Silicon Macs with macOS 14 or later and Windows
+            10/11 x64. An Intel Mac build is not included. Both Windows
+            downloads include the .NET runtime.
+          </p>
+        </details>
+        <details>
+          <summary>How do I install kbsd on Windows?</summary>
+          <p>
+            Download and run the Windows installer. It installs for your user
+            without administrator access and adds kbsd to the Start menu. Search
+            for kbsd to open it, even while it is already running in the
+            notification area. To remove it, use Windows Settings → Apps →
+            Installed apps. The installer and app are not Authenticode signed.
+          </p>
+          <p>
+            Launch at login is optional: turn it on in kbsd → General. The
+            portable ZIP is also available; extract the whole folder and run
+            kbsd.exe.
           </p>
         </details>
         <details>

@@ -46,13 +46,15 @@ internal static class Program
                 return 1;
             }
         }
-        using var mutex = new Mutex(true, @"Local\kbsd-desktop", out var first);
-        if (!first)
+        using var instance = new SingleInstanceActivation();
+        if (!instance.IsFirstInstance)
         {
-            MessageBox.Show("kbsd is already running. Open Settings from its notification-area icon.", "kbsd");
+            // A login launch stays quiet; a Start-menu launch opens the existing Settings window.
+            if (!args.Contains("--background")) instance.RequestSettings();
             return 0;
         }
         using var context = new TrayApplication(root, args.Contains("--background"));
+        instance.Listen(context.RequestSettings);
         Application.Run(context);
         return 0;
     }

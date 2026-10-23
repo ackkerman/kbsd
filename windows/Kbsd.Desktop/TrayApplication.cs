@@ -19,7 +19,7 @@ internal sealed class TrayApplication : ApplicationContext
     private WaveOutput? output;
     private CancellationTokenSource? preview;
     private bool dirty;
-    private bool exiting;
+    private volatile bool exiting;
     public SoundSettings Settings { get; private set; }
     public UsageStatistics Statistics { get; private set; }
     public string? Error { get; private set; }
@@ -73,6 +73,13 @@ internal sealed class TrayApplication : ApplicationContext
         statusTimer.Start();
         Retry();
         if (!background) ShowSettings();
+    }
+
+    public void RequestSettings()
+    {
+        if (exiting) return;
+        try { form.BeginInvoke(() => { if (!exiting) ShowSettings(); }); }
+        catch (InvalidOperationException) when (exiting || form.IsDisposed) { /* Shutdown can race with a queued launch request. */ }
     }
 
     public void ShowSettings()
